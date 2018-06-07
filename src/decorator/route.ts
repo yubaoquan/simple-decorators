@@ -25,7 +25,7 @@ function method(path: string | string[] | RegExp, middlewares: any[], methodName
 function Use(path: string | string[] | RegExp = '/'): Function {
     return function(target: any, propertyKey: string): void {
         getApplicationConfig().routes.push({
-            path: path,
+            path,
             methodName: 'use',
             methods: [target[propertyKey]],
             controller: target.constructor,

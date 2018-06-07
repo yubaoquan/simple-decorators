@@ -29,9 +29,7 @@ export default class App {
 
     initAttributes(): void {
         const attributes: Types.obj = this.config.attributes || {}
-        console.info(attributes)
         Object.keys(attributes).forEach((key: any) => {
-            console.info(`${key}---`, attributes[key])
             this.app.set(key, attributes[key])
         })
     }
@@ -49,23 +47,14 @@ export default class App {
         getApplicationConfig().routes
             .filter((route: any) => route.controller === controller.target)
             .forEach((route: any) => {
-                let path: string | RegExp | string[]
+                let path: string | RegExp | string[] = route.path
                 if (controller.path && typeof route.path === 'string') {
                     path = `${controller.path}${route.path}`
-                } else {
-                    path = route.path
                 }
                 if (route.methodName === 'use') {
-                    this.app.use(...route.methods)
-                } else {
-                    return (this.app as any)[route.methodName || 'get'](path, ...route.methods)
-                    // switch (route.methodName) {
-                    //     case 'get': return this.app.get(path, ...route.methods)
-                    //     case 'post': return this.app.post(path, ...route.methods)
-                    //     case 'delete': return this.app.delete(path, ...route.methods)
-                    //     default: return this.app.get(path, ...route.methods)
-                    // }
+                    return this.app.use(...route.methods)
                 }
+                return (this.app as any)[route.methodName || 'get'](path, ...route.methods)
             })
     }
 }
