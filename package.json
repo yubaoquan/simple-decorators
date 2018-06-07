@@ -1,0 +1,27 @@
+{
+  "name": "simple-decorators",
+  "version": "1.0.0",
+  "description": "A express based app framework providing some decorators like spring framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yubaoquan/simple-decorators.git"
+  },
+  "keywords": [
+    "typescript",
+    "decorator",
+    "framework"
+  ],
+  "author": "yubaoquan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yubaoquan/simple-decorators/issues"
+  },
+  "homepage": "https://github.com/yubaoquan/simple-decorators#readme",
+  "dependencies": {
+    "@types/express": "^4.16.0"
+  }
+}
